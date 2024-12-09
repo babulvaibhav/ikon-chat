@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    inetutils:
+      ignored-interfaces: '.*'
+    gateway:
+      routes:
+        - id: eureka-client
+          uri: lb://eureka-client
+          predicates:
+            - Path=/client/**
+        - id: discovery-service
+          uri: lb://discovery-service
+          predicates:
+            - Path=/discover/**
+      globalcors:
+        cors-configurations:
+          '[/**]':  # Matches all routes
+            allowedOrigins: 
+              - "http://localhost:8085"  # Replace with the origin of your frontend
+              - "http://localhost:8090"    # Add additional allowed origins
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    register-with-eureka: false
+    fetch-registry: false
+logging:
+  level:
+    com.netflix.discovery: DEBUG
+    com.netflix.eureka: DEBUG
+
+

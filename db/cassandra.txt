@@ -1,0 +1,40 @@
+USE chat_service;
+
+--Purpose: Store all chat messages for both personal and group chats.
+CREATE TABLE messages (
+    message_id UUID PRIMARY KEY,
+    sender_id UUID,
+    receiver_id UUID,       -- Null for group chats
+    group_id UUID,          -- Null for personal chats
+    message_content TEXT,
+    timestamp TIMESTAMP,
+    status TEXT            -- 'sent', 'delivered', 'read'
+);
+
+Purpose: Maintain active conversations and their metadata for faster retrieval.
+CREATE TABLE conversations (
+    user_id UUID,
+    conversation_id UUID,
+    is_group BOOLEAN,
+    last_message_content TEXT,
+    last_message_timestamp TIMESTAMP,
+    PRIMARY KEY (user_id, conversation_id)
+);
+
+Purpose: Track group memberships for users.
+CREATE TABLE group_membership (
+    group_id UUID,
+    user_id UUID,
+    role TEXT,             -- 'admin' or 'member'
+    added_at TIMESTAMP,
+    PRIMARY KEY (group_id, user_id)
+);
+
+Purpose: Track delivery and read status of messages for all recipients.
+CREATE TABLE message_status (
+    message_id UUID,
+    user_id UUID,
+    status TEXT,           -- 'delivered', 'read'
+    timestamp TIMESTAMP,
+    PRIMARY KEY (message_id, user_id)
+);

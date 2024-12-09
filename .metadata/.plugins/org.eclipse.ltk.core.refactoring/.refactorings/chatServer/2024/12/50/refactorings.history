@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.chat.server&apos; to &apos;com.ikon.chat.server&apos;&#x0D;&#x0A;- Original project: &apos;chatServer&apos;&#x0D;&#x0A;- Original element: &apos;chatServer/src/main/java/com.chat.server&apos;&#x0D;&#x0A;- Renamed element: &apos;chatServer/src/main/java/com.ikon.chat.server&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;com.chat.server&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.chat.server" name="com.ikon.chat.server" qualified="false" references="true" stamp="1733726907809" textual="false" version="1.0"/>
+</session>

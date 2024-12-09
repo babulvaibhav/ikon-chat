@@ -1,0 +1,20 @@
+@RestController
+@RequestMapping("/discover")
+public class ServiceDiscoveryController {
+
+    private final DiscoveryClient discoveryClient;
+
+    public ServiceDiscoveryController(DiscoveryClient discoveryClient) {
+        this.discoveryClient = discoveryClient;
+    }
+
+    @GetMapping("/services")
+    public List<String> getServices() {
+        return discoveryClient.getServices();
+    }
+
+    @GetMapping("/instances/{serviceName}")
+    public List<ServiceInstance> getInstances(@PathVariable String serviceName) {
+        return discoveryClient.getInstances(serviceName);
+    }
+}

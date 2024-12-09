@@ -1,0 +1,32 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: eureka-client-route
+          uri: lb://eureka-client
+          predicates:
+            - Path=/client/**
+        - id: discovery-service-route
+          uri: lb://discovery-service
+          predicates:
+            - Path=/discover/**
+      globalcors:
+        cors-configurations:
+          '[/**]':  # Matches all routes
+            allowedOrigins: 
+              - "http://localhost:8085"  # Replace with the origin of your frontend
+              - "http://localhost:8090"    # Add additional allowed origins
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
