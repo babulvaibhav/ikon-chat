@@ -1,13 +1,17 @@
+spring:
+  application:
+    name: ikon-message-consumer
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
 server:
   port: 0
 
 
-spring:
-  kafka:
-    bootstrap-servers: localhost:9092
 
-  application:
-    name: ikon-message-producer
+
+
 eureka:
   client:
     service-url:

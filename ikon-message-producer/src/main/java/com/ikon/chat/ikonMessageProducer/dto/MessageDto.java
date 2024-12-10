@@ -1,8 +1,8 @@
-package com.ikon.chat.ikon_message_producer.dto;
+package com.ikon.chat.ikonMessageProducer.dto;
 
 public class MessageDto {
 
-    private String key;
+
     private String senderNumber;
     private String recipientNumber;
     private String body;
@@ -10,19 +10,10 @@ public class MessageDto {
     public MessageDto() {
     }
 
-    public MessageDto(String key, String senderNumber, String recipientNumber, String body) {
-        this.key = key;
+    public MessageDto( String senderNumber, String recipientNumber, String body) {
         this.senderNumber = senderNumber;
         this.recipientNumber = recipientNumber;
         this.body = body;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public String getSenderNumber() {
