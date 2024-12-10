@@ -8,10 +8,10 @@ spring:
           uri: lb://eureka-client
           predicates:
             - Path=/client/**
-        - id: discovery-service
-          uri: lb://discovery-service
+        - id: messagingservice
+          uri: lb://messagingservice
           predicates:
-            - Path=/discover/**
+            - Path=/messages/**
       globalcors:
         cors-configurations:
           '[/**]':  # Matches all routes
