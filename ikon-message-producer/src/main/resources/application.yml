@@ -1,0 +1,19 @@
+server:
+  port: 0
+
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  application:
+    name: ikon-message-producer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+message:
+  topic:
+    private:
+      name: my-first-chat-topic
