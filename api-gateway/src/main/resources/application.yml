@@ -16,6 +16,10 @@ spring:
           uri: lb://ikon-message-producer
           predicates:
             - Path= /producer/**
+        - id: userservice
+          uri: lb://userservice
+          predicates:
+            - Path= /user/**
       globalcors:
         cors-configurations:
           '[/**]':  # Matches all routes
