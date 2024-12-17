@@ -19,12 +19,12 @@ public class KafkaProducerService {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     public void sendMessage(String key, String senderNumber, String recipientNumber, String bodyMessage) throws JsonProcessingException {
-            MessageDto tempMessage = new MessageDto();
-            tempMessage.setSenderNumber(senderNumber);
-            tempMessage.setRecipientNumber(recipientNumber);
-            tempMessage.setBody(bodyMessage);
+        MessageDto tempMessage = new MessageDto();
+        tempMessage.setSenderNumber(senderNumber);
+        tempMessage.setRecipientNumber(recipientNumber);
+        tempMessage.setBody(bodyMessage);
 
         String jsonString = objectMapper.writeValueAsString(tempMessage);
-            kafkaTemplate.send(privateTopicName,key, jsonString);
+        kafkaTemplate.send(privateTopicName,key, jsonString);
     }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat WebSocket</title>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body onload="disconnect()">
+<h1>WebSocket Chat Application</h1>
+<div>
+    <input type="text" id="from" placeholder="Choose a nickname" />
+    <br />
+    <input type="text" id="receiver" placeholder="Choose a receiver nickname" />
+    <br />
+    <button id="connect" onclick="connect();">Connect</button>
+    <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+</div>
+<br />
+<div id="conversationDiv" style="visibility: hidden;">
+    <input type="text" id="text" placeholder="Write a message..." />
+    <button onclick="sendMessage('/app/message/broadcast');">Send Broadcast</button>
+    <button onclick="sendMessage('/app/message/user');">Send Private Message</button>
+    <button onclick="sendGroupMessage('/app/message/group/mnop070d-5c4k-7f0d-4d8b-162843c14896');">Send Group Message</button>
+    <div id="response"></div>
+</div>
+</body>
+</html>
