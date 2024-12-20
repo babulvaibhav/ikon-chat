@@ -1,5 +1,7 @@
 package com.ikon.chat.userservice.controller;
 
+import com.ikon.chat.userservice.dto.UserLoginDto;
+import com.ikon.chat.userservice.dto.UserLoginResponseDto;
 import com.ikon.chat.userservice.entity.ChatUser;
 import com.ikon.chat.userservice.service.UserService;
 import jakarta.validation.Valid;
@@ -35,6 +37,17 @@ public class UserController {
     @GetMapping("/getAllusers")
     public List<ChatUser> getAllUsers() {
         return userService.getAllChatUsers();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserLoginResponseDto> userLogin(@RequestBody UserLoginDto userLoginDto){
+
+        UserLoginResponseDto userLoginResponseDto = userService.userLoginService(userLoginDto);
+        if(userLoginResponseDto == null){
+            return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(userLoginResponseDto, HttpStatus.OK);
     }
     
 }

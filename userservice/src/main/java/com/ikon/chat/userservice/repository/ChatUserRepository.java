@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChatUserRepository extends JpaRepository<ChatUser, UUID> {
+
+    ChatUser findByUserLogin(String userLogin);
 }

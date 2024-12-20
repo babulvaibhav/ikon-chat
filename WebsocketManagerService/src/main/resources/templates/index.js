@@ -3,7 +3,10 @@
 //});
 
 const stompClient = new StompJs.Client({
-    brokerURL: `${window.location.origin}/ikonchatws`
+    brokerURL: 'ws://localhost:8081/ikonchatws',
+    connectHeaders: {
+            'user-id': "550e8400-e29b-41d4-a716-446655440000" // Pass the user ID dynamically
+    }
 });
 
 stompClient.onConnect = (frame) => {
@@ -23,7 +26,7 @@ stompClient.onConnect = (frame) => {
 //                    showMessageOutput('Private', JSON.parse(messageOutput.body));
 //    });
 
-    stompClient.subscribe(`/queue/messages/{userName}`, function(messageOutput) {
+    stompClient.subscribe(`/queue/messages/${userName}`, function(messageOutput) {
                         showMessageOutput('Private', JSON.parse(messageOutput.body));
         });
 };
